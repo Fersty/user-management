@@ -1,0 +1,39 @@
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" *ngIf="isNewUser">Create New User</h4>
+        <h4 class="modal-tittle" *ngIf="!isNewUser">User Information</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label class="control-label">Name:</label>
+            <input type="text" class="form-control" [disabled]="!isNewUser" [(ngModel)]="userModel.name" [ngModelOptions]="{standalone: true}">
+            <label class="control-label">Phone:</label>
+            <input type="text" class="form-control" [disabled]="!isNewUser" [(ngModel)]="userModel.phone" [ngModelOptions]="{standalone: true}">
+            <label class="control-label">Email:</label>
+            <input type="text" class="form-control" [disabled]="!isNewUser" [(ngModel)]="userModel.email" [ngModelOptions]="{standalone: true}">
+            <label class="control-label">Birth date:</label>
+            <input type="text" class="form-control" [disabled]="!isNewUser" [(ngModel)]="birthDate" [ngModelOptions]="{standalone: true}">
+            <label class="control-label">Adress:</label>
+            <input type="text" class="form-control" [disabled]="!isNewUser" [(ngModel)]="userModel.address" [ngModelOptions]="{standalone: true}">
+            <label class="control-label">Gender:</label>
+            <select class="form-control" [disabled]="!isNewUser" [(ngModel)]="userModel.gender" [ngModelOptions]="{standalone: true}">
+              <option value="" selected></option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>    
+            </select>
+            <label class="control-label">Description:</label>
+            <textarea row="4" class="form-control" style="resize:none" [disabled]="!isNewUser" [(ngModel)]="userModel.description" [ngModelOptions]="{standalone: true}"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" *ngIf="isNewUser" (click)="saveUser()" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
